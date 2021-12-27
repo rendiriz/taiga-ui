@@ -1,0 +1,21 @@
+<div
+    class="t-box-code"
+    [class.t-animate]="animate"
+    [class.t-skip-animation]="isCypress"
+>
+    <div
+        *ngIf="isPreview; else codeSection"
+        automation-id="tui-doc-example"
+        class="t-demo"
+    >
+        <ng-content></ng-content>
+    </div>
+
+    <ng-template #codeSection>
+        <tui-doc-copy
+            class="t-copy-code"
+            [cdkCopyToClipboard]="code || ''"
+        ></tui-doc-copy>
+        <tui-doc-code [code]="code || ''"></tui-doc-code>
+    </ng-template>
+</div>
